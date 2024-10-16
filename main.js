@@ -245,14 +245,19 @@ const app = document.querySelector("#app");
 
 let domstring = "";
 for (pet of pets) {
-  domstring += `<div class="card" style="width: 18rem;">
-  <img src=${pet.imageUrl} class="card-img-top" alt="${pet.id}">
+  domstring += `<div class="card" style="width: 19rem;">
+    <div class="card-header">${pet.name}</div>
+   <img src=${pet.imageUrl} class="card-img-top" alt="${pet.id}">
   <div class="card-body">
-    <h5 class="card-title">${pet.name}</h5>
     <p class="card-text">${pet.specialSkill}</p>
-    <a href="#" class="btn btn-primary">Adopt Me</a>
   </div>
+  <div class=${pet.type} "card-footer" >${pet.type}</div>
 </div>`
 }
 
 app.innerHTML = domstring
+
+const dgbtn = document.querySelector(".btn-dog");
+const ctbtn = document.querySelector(".btn-cat");
+const dnbtn = document.querySelector(".btn-dino");
+const allbtn = document.querySelector(".btn-all");
