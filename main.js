@@ -240,24 +240,92 @@ const pets = [
       imageUrl: "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg"
     }
   ];
-
-const app = document.querySelector("#app");
-
-let domstring = "";
-for (pet of pets) {
-  domstring += `<div class="card" style="width: 19rem;">
+  const renderToDom = (pets) => {
+    const app = document.querySelector("#app");
+    let domstring = "";
+    for (pet of pets) {
+    domstring += `<div class="card" style="width: 19rem;">
     <div class="card-header">${pet.name}</div>
-   <img src=${pet.imageUrl} class="card-img-top" alt="${pet.id}">
-  <div class="card-body">
+    <img src=${pet.imageUrl} class="card-img-top" alt="${pet.id}">
+    <div class="card-body">
     <p class="card-text">${pet.specialSkill}</p>
-  </div>
-  <div class=${pet.type} "card-footer" >${pet.type}</div>
-</div>`
-}
+    </div>
+    <div class=${pet.type} "card-footer" >${pet.type}</div>
+    </div>`
+    }
+    app.innerHTML = domstring
 
-app.innerHTML = domstring
+  };
 
+
+  const dogFilter = () =>  {
+    let dogArray = [];
+    for (pet of pets) {
+      if(pet.type === "dog") {
+        dogArray.push(pet);
+      }
+      renderToDom(dogArray);
+    }
+  }
+
+  const catFilter = () =>  {
+    let catArray = [];
+    for (pet of pets) {
+      if(pet.type === "cat") {
+        catArray.push(pet);
+      }
+      renderToDom(catArray);
+    }
+  }
+
+  const dinoFilter = () =>  {
+    let dinoArray = [];
+    for (pet of pets) {
+      if(pet.type === "dino") {
+        dinoArray.push(pet);
+      }
+      renderToDom(dinoArray);
+    }
+  }
+
+  const allFilter = () =>  {
+    renderToDom(pets);
+      }
+
+  
+  
+    // I tried to make an else if statement to do this all at the same time
+    // for (pet of pets) {
+    //   if (pet.type === "dog") {
+    //     arrayFilter.push(pets);
+    //   } else if (pet.type === "cat") {
+    //     arrayFilter.push(pets);}
+    //     else if (pet.type === "dino") {
+    //       arrayFilter.push(pets);
+    //     }
+    //   } 
+
+
+
+  
 const dgbtn = document.querySelector(".btn-dog");
 const ctbtn = document.querySelector(".btn-cat");
 const dnbtn = document.querySelector(".btn-dino");
 const allbtn = document.querySelector(".btn-all");
+
+  dgbtn.addEventListener("click", dogFilter)
+  ctbtn.addEventListener("click", catFilter)
+  dnbtn.addEventListener("click", dinoFilter)
+  allbtn.addEventListener("click", allFilter)
+ 
+
+
+// app.innerHTML = domstring
+
+const startApp = () => {
+  renderToDom(pets);
+
+  // events(); // ALWAYS LAST
+};
+
+startApp()
