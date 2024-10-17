@@ -242,8 +242,8 @@ const pets = [
   ];
 
   const form = document.querySelector("form");
-
-  const createAnimal (e) => {
+  
+  const createAnimal = (e) => {
     e.preventDefault();
 
     
