@@ -240,6 +240,22 @@ const pets = [
       imageUrl: "https://mydinosaurs.com/wp-content/uploads/2017/02/2-3-600x400.jpg"
     }
   ];
+
+  const form = document.querySelector("form");
+
+  const createAnimal (e) => {
+    e.preventDefault();
+
+    const newAnimal = {
+      id: TextDecoderStream.length + 1,
+      name: document.querySelector("#name").ariaValueMax,
+      color:
+      specialSkill:
+      type:
+      imageUrl:
+    }
+  }
+
   const renderToDom = (pets) => {
     const app = document.querySelector("#app");
     let domstring = "";
