@@ -242,18 +242,23 @@ const pets = [
   ];
 
   const form = document.querySelector("form");
-
-  const createAnimal (e) => {
+  
+  const createAnimal = (e) => {
     e.preventDefault();
 
+    
     const newAnimal = {
-      id: TextDecoderStream.length + 1,
-      name: document.querySelector("#name").ariaValueMax,
-      color:
-      specialSkill:
-      type:
-      imageUrl:
+      id: pets.length + 1,
+      name: document.querySelector("#name").value,
+      color: document.querySelector("#color").value,
+      specialSkill: document.querySelector("#specialSkill").value,
+      type: document.querySelector("#type").value,
+      imageUrl: document.querySelector("#imageUrl").value,
     }
+
+    pets.unshift(newAnimal);
+    return renderToDom(pets);
+    form.reset();
   }
 
   const renderToDom = (pets) => {
