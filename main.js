@@ -270,9 +270,12 @@ const pets = [
     <img src=${pet.imageUrl} class="card-img-top" alt="${pet.id}">
     <div class="card-body">
     <p class="card-text">${pet.specialSkill}</p>
+    <button type="button" id="delete--${pet.id}" class="btn btn-danger">Delete</button>
     </div>
     <div class=${pet.type} "card-footer" >${pet.type}</div>
     </div>`
+
+    // <button type="button" class="btn btn-danger" id="delete--${pets.id}>Delete</button>
     }
     app.innerHTML = domstring
 
@@ -313,19 +316,16 @@ const pets = [
     renderToDom(pets);
       }
 
-  
-  
-    // I tried to make an else if statement to do this all at the same time
-    // for (pet of pets) {
-    //   if (pet.type === "dog") {
-    //     arrayFilter.push(pets);
-    //   } else if (pet.type === "cat") {
-    //     arrayFilter.push(pets);}
-    //     else if (pet.type === "dino") {
-    //       arrayFilter.push(pets);
-    //     }
-    //   } 
 
+const deletePet = (e)=> {
+  if(e.target.id.includes("delete")){
+    const[, id] = e.target.id.split("--")
+    const index = pets.findIndex(obj => obj.id === Number(id));
+    pets.splice(index,1)
+    return renderToDom(pets);
+  }
+}
+////
 
 
   
@@ -338,6 +338,7 @@ const allbtn = document.querySelector(".btn-all");
   ctbtn.addEventListener("click", catFilter)
   dnbtn.addEventListener("click", dinoFilter)
   allbtn.addEventListener("click", allFilter)
+  form.addEventListener('submit', createAnimal)
  
 
 
