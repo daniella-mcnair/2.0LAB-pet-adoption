@@ -256,7 +256,7 @@ const pets = [
       imageUrl: document.querySelector("#imageUrl").value,
     }
 
-    pets.unshift(newAnimal);
+    pets.push(newAnimal);
     return renderToDom(pets);
     form.reset();
   }
@@ -270,7 +270,7 @@ const pets = [
     <img src=${pet.imageUrl} class="card-img-top" alt="${pet.id}">
     <div class="card-body">
     <p class="card-text">${pet.specialSkill}</p>
-    <button type="button" id="delete--${pet.id}" class="btn btn-danger">Delete</button>
+    <button type="button" id="delete--${pet.id}" class="delete-button btn btn-danger">Delete</button>
     </div>
     <div class=${pet.type} "card-footer" >${pet.type}</div>
     </div>`
@@ -316,7 +316,7 @@ const pets = [
     renderToDom(pets);
       }
 
-
+const app = document.querySelector("#app");
 const deletePet = (e)=> {
   if(e.target.id.includes("delete")){
     const[, id] = e.target.id.split("--")
@@ -339,6 +339,7 @@ const allbtn = document.querySelector(".btn-all");
   dnbtn.addEventListener("click", dinoFilter)
   allbtn.addEventListener("click", allFilter)
   form.addEventListener('submit', createAnimal)
+  app.addEventListener('click', deletePet)
  
 
 
